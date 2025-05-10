@@ -5,47 +5,65 @@
     android:id="@+id/main"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    tools:context=".MainActivity"
-    android:background="@drawable/og_background">
+    android:background="@drawable/og_background"
+    tools:context=".MainActivity">
+
+
 
     <androidx.fragment.app.FragmentContainerView
         android:id="@+id/task_fragment_container"
         android:layout_width="match_parent"
-        android:layout_height="match_parent"
-        app:layout_constraintBottom_toTopOf="@id/bottom_guideline">
-    </androidx.fragment.app.FragmentContainerView>
+        android:layout_height="0dp"
+
+        app:layout_constraintTop_toBottomOf="@id/header"
+        app:layout_constraintBottom_toTopOf="@id/nav_bar"
+        app:layout_constraintLeft_toRightOf="@id/left_guideline"
+        app:layout_constraintRight_toLeftOf="@id/right_guideline"/>
+
+    <androidx.appcompat.widget.Toolbar
+        android:id="@+id/header"
+        style="@style/header"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        app:layout_constraintTop_toTopOf="parent"
+        app:layout_constraintRight_toRightOf="@id/right_guideline"
+        app:layout_constraintLeft_toLeftOf="@id/left_guideline">
+        <TextView
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:text="Get it done in time!"
+            style="@style/header"/>
+    </androidx.appcompat.widget.Toolbar>
 
     <com.google.android.material.bottomnavigation.BottomNavigationView
+        android:id="@+id/nav_bar"
         style="@style/bottom_bar"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
+
         app:layout_constraintBottom_toBottomOf="parent"
-        app:menu="@menu/nav_bar_items"
-        android:elevation="8dp"
-        tools:layout_editor_absoluteX="52dp"/>
+        app:layout_constraintTop_toBottomOf="@id/bottom_guideline"
+        app:menu="@menu/nav_bar_items"/>
 
     <androidx.constraintlayout.widget.Guideline
         android:id="@+id/bottom_guideline"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:orientation="horizontal"
-        app:layout_constraintGuide_percent="0.90">
-    </androidx.constraintlayout.widget.Guideline>
+        app:layout_constraintGuide_percent="0.90"/>
+
     <androidx.constraintlayout.widget.Guideline
         android:id="@+id/left_guideline"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:orientation="vertical"
-        app:layout_constraintGuide_percent="0.05">
-    </androidx.constraintlayout.widget.Guideline>
+        app:layout_constraintGuide_percent="0.05"/>
+
     <androidx.constraintlayout.widget.Guideline
         android:id="@+id/right_guideline"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:orientation="vertical"
-        app:layout_constraintGuide_percent="0.95">
-    </androidx.constraintlayout.widget.Guideline>
-
-
+        app:layout_constraintGuide_percent="0.95"/>
 
 </androidx.constraintlayout.widget.ConstraintLayout>

@@ -1,7 +1,7 @@
 <?xml version="1.0" encoding="utf-8"?>
 <menu xmlns:android="http://schemas.android.com/apk/res/android">
-    <item android:id="@+id/home" android:title="Home" android:icon=""/>
-    <item android:id="@+id/add_tas_button" android:title="New Task"/>
-    <item android:id="@+id/settings" android:title="Settings"/>
+    <item android:id="@+id/home_nav" android:title="Home" android:icon="@drawable/home"/>
+    <item android:id="@+id/add_task_button" android:title="New Task" android:icon="@drawable/plus"/>
+    <item android:id="@+id/settings_nav" android:title="Settings" android:icon="@drawable/settings"/>
 
 </menu>
