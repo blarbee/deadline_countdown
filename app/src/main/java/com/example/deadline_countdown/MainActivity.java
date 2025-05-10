@@ -2,6 +2,7 @@ package com.example.deadline_countdown;
 
 import android.os.Bundle;
 import android.view.WindowManager;
+import android.widget.TextView;
 import android.widget.Toast;
 
 import androidx.activity.EdgeToEdge;
@@ -15,7 +16,9 @@ import com.google.android.material.bottomnavigation.BottomNavigationView;
 
 public class MainActivity extends AppCompatActivity {
     TaskFragment taskFragment = new TaskFragment();
-//    SettingsFragment settingsFragment = new SettingsFragment();
+    SettingsFragment settingsFragment = new SettingsFragment();
+
+
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -30,17 +33,22 @@ public class MainActivity extends AppCompatActivity {
                     .add(R.id.task_fragment_container, TaskFragment.class, bundle)
                     .commit();
         }
+        TextView header_text = findViewById(R.id.header_tv);
+        header_text.setText("Get it done in time!");
         getSupportFragmentManager().beginTransaction().replace(R.id.task_fragment_container, taskFragment).commit();
         BottomNavigationView nav = findViewById(R.id.nav_bar);
         nav.setOnItemSelectedListener(item ->{
+
             
             if(item.getItemId() == R.id.home_nav){
                 getSupportFragmentManager().beginTransaction().replace(R.id.task_fragment_container, taskFragment).commit();
+                header_text.setText("Get it done in time!");
                 Toast.makeText(this, "Go to homepage", Toast.LENGTH_SHORT).show();
                 return true;
                 
             } else if (item.getItemId() == R.id.settings_nav) {
-//                getSupportFragmentManager().beginTransaction().replace(R.id.task_fragment_container, settingsFragment).commit();
+                getSupportFragmentManager().beginTransaction().replace(R.id.task_fragment_container, settingsFragment).commit();
+                header_text.setText("Settings");
                 Toast.makeText(this, "Go to settings", Toast.LENGTH_SHORT).show();
                 return true;
 

@@ -23,15 +23,15 @@
     <androidx.appcompat.widget.Toolbar
         android:id="@+id/header"
         style="@style/header"
-        android:layout_width="match_parent"
+        android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         app:layout_constraintTop_toTopOf="parent"
-        app:layout_constraintRight_toRightOf="@id/right_guideline"
-        app:layout_constraintLeft_toLeftOf="@id/left_guideline">
+        app:layout_constraintLeft_toRightOf="@id/left_guideline">
         <TextView
+            android:id="@+id/header_tv"
             android:layout_width="match_parent"
             android:layout_height="match_parent"
-            android:text="Get it done in time!"
+            android:text=""
             style="@style/header"/>
     </androidx.appcompat.widget.Toolbar>
 
