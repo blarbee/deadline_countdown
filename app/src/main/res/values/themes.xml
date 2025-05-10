@@ -34,7 +34,8 @@
 
     <style name="inputs">
         <item name="android:background">@drawable/setting_options_input_bg</item>
-        <item name="android:textColor">@color/og_cream</item>
+        <item name="android:textColor">@color/og_black</item>
+        <item name="hintTextColor">@color/og_cream</item>
         <item name="android:textSize">14sp</item>
         <item name="android:padding">10dp</item>
     </style>
