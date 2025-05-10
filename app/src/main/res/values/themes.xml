@@ -2,8 +2,41 @@
     <!-- Base application theme. -->
     <style name="Base.Theme.Deadline_Countdown" parent="Theme.Material3.DayNight.NoActionBar">
         <!-- Customize your light theme here. -->
-         <item name="black">@color/my_light_primary</item>
+<!--         <item name="black">@color/my_light_primary</item>-->
     </style>
 
     <style name="Theme.Deadline_Countdown" parent="Base.Theme.Deadline_Countdown" />
+
+    <style name="header">
+        <item name="textFillColor">@color/og_black</item>
+        <item name="backgroundColor">@color/og_white</item>
+    </style>
+    
+    
+    <style name="background">
+        <item name="background">@drawable/og_background</item>
+    </style>
+
+    <style name="task">
+        <item name="textFillColor">@color/og_black</item>
+        <item name="fontFamily">@font/robotoslab_regular</item>
+    </style>
+
+    <style name="input">
+        <item name="backgroundColor">@color/og_white</item>
+        <item name="textFillColor">@color/og_cream</item>
+    </style>
+
+    <style name="options">
+        <item name="backgroundColor">@color/og_white</item>
+        <item name="textFillColor">@color/og_black</item>
+    </style>
+
+    <style name="switch_bud">
+        <item name="color">@color/og_grey</item>
+    </style>
+
+    <style name="bottom_bar">
+        <item name="android:background">@drawable/menu_background</item>
+    </style>
 </resources>
