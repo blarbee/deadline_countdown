@@ -1,0 +1,82 @@
+<?xml version="1.0" encoding="utf-8"?>
+<androidx.constraintlayout.widget.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:id="@+id/main"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    tools:context=".TaskActivity"
+    android:background="@drawable/og_background">
+
+    <androidx.appcompat.widget.Toolbar
+        android:id="@+id/header"
+        style="@style/header"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        app:layout_constraintTop_toTopOf="parent"
+        app:layout_constraintLeft_toRightOf="@id/left_guideline">
+        <TextView
+            android:id="@+id/header_tv"
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:text="Set a timer"
+            style="@style/header"/>
+    </androidx.appcompat.widget.Toolbar>
+
+    <EditText
+        style="@style/inputs"
+        android:id="@+id/settings_color_option"
+        android:layout_width="0dp"
+        android:layout_height="wrap_content"
+        android:text="Name your task..."
+        app:layout_constraintLeft_toRightOf="@id/left_guideline"
+        app:layout_constraintRight_toLeftOf="@id/right_guideline"
+        app:layout_constraintTop_toBottomOf="@id/top_guideline"
+        />
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+    <androidx.constraintlayout.widget.Guideline
+        android:id="@+id/top_guideline"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:orientation="horizontal"
+        app:layout_constraintGuide_percent="0.12"/>
+
+
+    <androidx.constraintlayout.widget.Guideline
+        android:id="@+id/bottom_guideline"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:orientation="horizontal"
+        app:layout_constraintGuide_percent="0.95"/>
+
+    <androidx.constraintlayout.widget.Guideline
+        android:id="@+id/left_guideline"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:orientation="vertical"
+        app:layout_constraintGuide_percent="0.05"/>
+
+    <androidx.constraintlayout.widget.Guideline
+        android:id="@+id/right_guideline"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:orientation="vertical"
+        app:layout_constraintGuide_percent="0.95"/>
+
+</androidx.constraintlayout.widget.ConstraintLayout>

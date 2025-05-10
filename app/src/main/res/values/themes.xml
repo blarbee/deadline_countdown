@@ -27,14 +27,16 @@
         <item name="android:layout_marginTop">16dp</item>
     </style>
 
-    <style name="input">
-        <item name="backgroundColor">@color/og_white</item>
-        <item name="textFillColor">@color/og_cream</item>
+    <style name="options">
+        <item name="android:background">@drawable/setting_options_input_bg</item>
+        <item name="android:textColor">@color/og_black</item>
     </style>
 
-    <style name="options">
-        <item name="backgroundColor">@color/og_white</item>
-        <item name="textFillColor">@color/og_black</item>
+    <style name="inputs">
+        <item name="android:background">@drawable/setting_options_input_bg</item>
+        <item name="android:textColor">@color/og_cream</item>
+        <item name="android:textSize">14sp</item>
+        <item name="android:padding">10dp</item>
     </style>
 
     <style name="switch_bud">

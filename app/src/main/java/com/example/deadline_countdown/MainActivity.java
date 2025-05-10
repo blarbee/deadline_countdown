@@ -1,5 +1,6 @@
 package com.example.deadline_countdown;
 
+import android.content.Intent;
 import android.os.Bundle;
 import android.view.WindowManager;
 import android.widget.TextView;
@@ -53,6 +54,9 @@ public class MainActivity extends AppCompatActivity {
                 return true;
 
             } else if (item.getItemId() == R.id.add_task_button) {
+                Intent myIntent = new Intent(this, TaskActivity.class);
+//                myIntent.putExtra("key", value); //Optional parameters
+                this.startActivity(myIntent);
                 Toast.makeText(this, "Add a task", Toast.LENGTH_SHORT).show();
                 return true;
                 
