@@ -33,8 +33,7 @@
         android:inputType="text"
         app:layout_constraintLeft_toRightOf="@id/left_guideline"
         app:layout_constraintRight_toLeftOf="@id/right_guideline"
-        app:layout_constraintTop_toBottomOf="@id/top_guideline"
-        />
+        app:layout_constraintTop_toBottomOf="@id/top_guideline" />
 
     <TextView
         android:id="@+id/pick_color"
@@ -49,64 +48,79 @@
 
 
 
-    <com.google.android.flexbox.FlexboxLayout
+<!--    <com.google.android.flexbox.FlexboxLayout-->
+<!--        android:id="@+id/color_layout"-->
+<!--        android:layout_width="0dp"-->
+<!--        android:layout_height="60sp"-->
+<!--        android:layout_marginTop="15dp"-->
+
+<!--        app:flexWrap="wrap"-->
+<!--        app:alignItems="stretch"-->
+<!--        app:alignContent="space_around"-->
+<!--        app:justifyContent="space_between"-->
+
+<!--        app:layout_constraintTop_toBottomOf="@id/pick_color"-->
+<!--        app:layout_constraintLeft_toLeftOf="@id/left_guideline"-->
+<!--        app:layout_constraintRight_toRightOf="@id/right_guideline">-->
+
+
+<!--    =================================================== USER PICKS A COLOR-->
+    <RadioGroup
         android:id="@+id/color_layout"
-        android:layout_width="0dp"
-        android:layout_height="60sp"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:orientation="horizontal"
         android:layout_marginTop="15dp"
 
-        app:flexWrap="wrap"
-        app:alignItems="stretch"
-        app:alignContent="space_around"
-        app:justifyContent="space_between"
-
         app:layout_constraintTop_toBottomOf="@id/pick_color"
+        app:layout_constraintBottom_toTopOf="@id/which"
         app:layout_constraintLeft_toLeftOf="@id/left_guideline"
-        app:layout_constraintRight_toRightOf="@id/right_guideline">
-        <androidx.appcompat.widget.AppCompatCheckBox
+        app:layout_constraintRight_toLeftOf="@id/right_guideline">
+        <androidx.appcompat.widget.AppCompatRadioButton
             android:id="@+id/task_color_1"
+            android:backgroundTint="@color/og_cream"
             style="@style/checkbox_color"
-            android:background="@color/og_cream"
             android:layout_width="80sp"
             android:layout_height="match_parent"
             android:contentDescription="TODO"
-
-            />
-        <ImageView
+            android:layout_marginRight="10sp"/>
+        <androidx.appcompat.widget.AppCompatRadioButton
             android:id="@+id/task_color_2"
             android:layout_width="80sp"
             android:layout_height="match_parent"
-            android:background="@drawable/task_background"
+            style="@style/checkbox_color"
             android:backgroundTint="@color/og_green"
             android:contentDescription="TODO"
-
-            tools:ignore="MissingConstraints" />
-        <ImageView
+            tools:ignore="MissingConstraints"
+            android:layout_marginRight="10sp"/>
+        <androidx.appcompat.widget.AppCompatRadioButton
             android:id="@+id/task_color_3"
+            style="@style/checkbox_color"
             android:layout_width="80sp"
             android:layout_height="match_parent"
-            android:background="@drawable/task_background"
             android:backgroundTint="@color/og_white"
             android:contentDescription="TODO"
-
-
-            tools:ignore="MissingConstraints" />
-        <ImageView
+            tools:ignore="MissingConstraints"
+            android:layout_marginRight="10sp"/>
+        <androidx.appcompat.widget.AppCompatRadioButton
             android:id="@+id/task_color_4"
+            style="@style/checkbox_color"
             android:layout_width="80sp"
             android:layout_height="match_parent"
-            android:background="@drawable/task_background"
-            android:backgroundTint="@color/og_orange"
             android:contentDescription="TODO"
+            android:backgroundTint="@color/og_orange"
             app:layout_constraintLeft_toRightOf="@id/task_color_3"
             tools:ignore="MissingConstraints"
-
             />
 
-    </com.google.android.flexbox.FlexboxLayout>
+    </RadioGroup>
+
+
+<!--    </com.google.android.flexbox.FlexboxLayout>-->
 
 
 
+<!--    =================================================== USER PICKS A FORMAT-->
     <TextView
         android:id="@+id/which"
         android:layout_width="wrap_content"
@@ -130,60 +144,49 @@
         app:flexWrap="wrap"
         app:alignItems="stretch"
         app:alignContent="space_around"
-        app:justifyContent="space_between"
-        >
-
-
-
+        app:justifyContent="space_between">
 
         <androidx.appcompat.widget.AppCompatCheckBox
             android:id="@+id/format_week"
             style="@style/checkbox"
             android:layout_width="wrap_content"
             android:layout_height="40sp"
-            android:text="Week"
-
-
-            />
+            android:text="Week" />
         <androidx.appcompat.widget.AppCompatCheckBox
             android:id="@+id/format_day"
             style="@style/checkbox"
             android:layout_width="wrap_content"
             android:layout_height="40sp"
-            android:text="Day"
-
-            />
+            android:text="Day" />
         <androidx.appcompat.widget.AppCompatCheckBox
             android:id="@+id/format_hour"
             style="@style/checkbox"
             android:layout_width="wrap_content"
             android:layout_height="40sp"
-            android:text="Hour"
-            />
+            android:text="Hour"/>
         <androidx.appcompat.widget.AppCompatCheckBox
             android:id="@+id/format_min"
             style="@style/checkbox"
             android:layout_width="wrap_content"
             android:layout_height="40sp"
-            android:text="Min"
-        />
+            android:text="Min" />
         <androidx.appcompat.widget.AppCompatCheckBox
             android:id="@+id/format_sec"
             style="@style/checkbox"
             android:layout_width="wrap_content"
             android:layout_height="40sp"
-            android:text="Sec"
-            />
+            android:text="Sec" />
     </com.google.android.flexbox.FlexboxLayout>
 
 
 
+<!--    =================================================== USER PICKS A DATE-->
 
+<!--    =================================================== USER PICKS A TIME-->
 
+<!--    =================================================== USER ADDS AN OPTIONAL DESCRIPTION-->
 
-
-
-
+<!--    =================================================== GUIDELINES-->
 
     <androidx.constraintlayout.widget.Guideline
         android:id="@+id/top_guideline"
