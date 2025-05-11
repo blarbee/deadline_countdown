@@ -25,7 +25,10 @@
         <item name="android:fontFamily">@font/robotoslab_regular</item>
         <item name="android:background">@drawable/task_background</item>
         <item name="android:layout_marginTop">16dp</item>
-    </style>
+        <item name="android:elevation">10dp</item>
+        <item name="android:padding">5dp</item>
+<!--        <item name="android:backgroundTint">@color/og_orange</item>-->
+</style>
 
     <style name="options">
         <item name="android:background">@drawable/setting_options_input_bg</item>
@@ -47,4 +50,29 @@
     <style name="bottom_bar">
         <item name="android:background">@drawable/menu_background</item>
     </style>
+
+    <style name="checkbox">
+<!--        android:clickable="true"-->
+<!--        android:focusable="true"-->
+<!--        android:background="@drawable/checkbox_selector_format"-->
+<!--        android:button="@drawable/cb_show_hide_selector"-->
+<!--        android:textColor="@color/checkbox_text"-->
+<!--        android:text="this is a checkbox"-->
+        <item name="android:textAlignment">center</item>
+        <item name="android:textSize">12sp</item>
+        <item name="android:clickable">true</item>
+        <item name="android:focusable">true</item>
+        <item name="android:textColor">@color/og_black</item>
+        <item name="android:button">@drawable/checkbox_selector_format</item>
+        <item name="android:background">@drawable/checkbox_selector_format</item>
+    </style>
+
+    <style name="checkbox_color">
+        <item name="android:clickable">true</item>
+        <item name="android:focusable">true</item>
+        <item name="android:button">@drawable/checkbox_selector_color</item>
+        <item name="android:background">@drawable/checkbox_selector_color</item>
+    </style>
+
+
 </resources>

@@ -63,12 +63,12 @@
         app:layout_constraintTop_toBottomOf="@id/pick_color"
         app:layout_constraintLeft_toLeftOf="@id/left_guideline"
         app:layout_constraintRight_toRightOf="@id/right_guideline">
-        <ImageView
+        <androidx.appcompat.widget.AppCompatCheckBox
             android:id="@+id/task_color_1"
+            style="@style/checkbox_color"
+            android:background="@color/og_cream"
             android:layout_width="80sp"
             android:layout_height="match_parent"
-            android:background="@drawable/task_background"
-            android:backgroundTint="@color/og_grey"
             android:contentDescription="TODO"
 
             />
@@ -111,7 +111,7 @@
         android:id="@+id/which"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:text="Which format do you want the countdown to be in..."
+        android:text="Choose a format for the countdown..."
         android:layout_marginTop="30dp"
         android:textColor="@color/og_cream"
         app:layout_constraintTop_toBottomOf="@id/color_layout"
@@ -133,70 +133,48 @@
         app:justifyContent="space_between"
         >
 
-        <TextView
-            android:id="@+id/format_month"
-            style="@style/inputs"
-            android:textSize="12sp"
-            android:layout_width="55sp"
-            android:layout_height="40sp"
-            android:text="Month"
-            android:textAlignment="center"
-            />
-        <TextView
+
+
+
+        <androidx.appcompat.widget.AppCompatCheckBox
             android:id="@+id/format_week"
-            style="@style/inputs"
-            android:textSize="12sp"
-            android:layout_width="55sp"
+            style="@style/checkbox"
+            android:layout_width="wrap_content"
             android:layout_height="40sp"
             android:text="Week"
-            android:textAlignment="center"
+
+
             />
-        <TextView
+        <androidx.appcompat.widget.AppCompatCheckBox
             android:id="@+id/format_day"
-            style="@style/inputs"
-            android:textSize="12sp"
-            android:layout_width="55sp"
+            style="@style/checkbox"
+            android:layout_width="wrap_content"
             android:layout_height="40sp"
             android:text="Day"
-            android:textAlignment="center"
 
             />
-        <TextView
+        <androidx.appcompat.widget.AppCompatCheckBox
             android:id="@+id/format_hour"
-            style="@style/inputs"
-            android:textSize="12sp"
-            android:layout_width="55sp"
+            style="@style/checkbox"
+            android:layout_width="wrap_content"
             android:layout_height="40sp"
             android:text="Hour"
-            android:textAlignment="center"
             />
-        <TextView
-        android:id="@+id/format_min"
-        style="@style/inputs"
-        android:textSize="12sp"
-        android:layout_width="55sp"
-        android:layout_height="40sp"
-        android:text="Min"
-            android:textAlignment="center"
+        <androidx.appcompat.widget.AppCompatCheckBox
+            android:id="@+id/format_min"
+            style="@style/checkbox"
+            android:layout_width="wrap_content"
+            android:layout_height="40sp"
+            android:text="Min"
         />
-        <TextView
+        <androidx.appcompat.widget.AppCompatCheckBox
             android:id="@+id/format_sec"
-            style="@style/inputs"
-            android:textSize="12sp"
-            android:layout_width="55sp"
+            style="@style/checkbox"
+            android:layout_width="wrap_content"
             android:layout_height="40sp"
             android:text="Sec"
-            android:textAlignment="center"
             />
-
-
-
-
     </com.google.android.flexbox.FlexboxLayout>
-
-
-
-
 
 
 
@@ -213,7 +191,6 @@
         android:layout_height="wrap_content"
         android:orientation="horizontal"
         app:layout_constraintGuide_percent="0.12"/>
-
 
     <androidx.constraintlayout.widget.Guideline
         android:id="@+id/bottom_guideline"
@@ -235,9 +212,6 @@
         android:layout_height="wrap_content"
         android:orientation="vertical"
         app:layout_constraintGuide_percent="0.05"/>
-
-
-
 
     <androidx.constraintlayout.widget.Guideline
         android:id="@+id/right_guideline"
