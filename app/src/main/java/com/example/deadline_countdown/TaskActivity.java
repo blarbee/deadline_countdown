@@ -7,23 +7,26 @@ import android.widget.Button;
 import android.widget.CheckBox;
 import android.widget.EditText;
 import android.widget.RadioGroup;
+import android.widget.Toast;
 
 import androidx.activity.EdgeToEdge;
 import androidx.appcompat.app.AppCompatActivity;
 import androidx.core.graphics.Insets;
 import androidx.core.view.ViewCompat;
 import androidx.core.view.WindowInsetsCompat;
-
+//TODO: add dialogfragment listeners for date and time buttons
 public class TaskActivity extends AppCompatActivity {
     private static final String TAG = "debug";
 
     private EditText task_title;
     private Button save_button_v, task_date, task_time;
     CheckBox format_week, format_day, format_hour, format_min, format_sec;
+    EditText task_description;
 
-    private String task_title_txt;
-    private int task_selected_color;
+    private String task_title_txt = "";
+    private int task_selected_color = 0;
     private boolean selected_week, selected_day, selected_hour, selected_min, selected_sec = false;
+    private String optional_description = "";
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -36,40 +39,47 @@ public class TaskActivity extends AppCompatActivity {
             return insets;
         });
 
-//        save_button_v = findViewById(R.id.save_button);
-//        save_button_v.setEnabled(false);
+
 
         listenForTaskColor();
         listenForTaskFormat();
         saveTaskOnClick();
 
-
-
-
-
     }
 
     public void saveTaskOnClick(){
-
-
-
-
-
-
         save_button_v = findViewById(R.id.save_button);
         save_button_v.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
                 task_title = findViewById(R.id.settings_color_option);
                 task_title_txt = TaskActivity.this.task_title.getText().toString();
-                Log.d(TAG, "task_title onclicksavebutton: " + task_title_txt);
+                task_description = findViewById(R.id.task_description);
+                optional_description = task_description.getText().toString();
+                if(allFieldsAreCompleted()){
+//                    TODO:create task object once all fields are completed and send it to mainactivity to handle
 
-                Log.d(TAG, "task_color onCheckedChanged: " + task_selected_color);
+                    Log.d(TAG, "task_title onclicksavebutton: " + task_title_txt);
 
-                Log.d(TAG, "datetime format week = " + selected_week + " day = " + selected_day + " hour = " + selected_hour + " min = " + selected_min + " sec = " + selected_sec);
+                    Log.d(TAG, "task_color onCheckedChanged: " + task_selected_color);
 
+                    Log.d(TAG, "datetime format week = " + selected_week + " day = " + selected_day + " hour = " + selected_hour + " min = " + selected_min + " sec = " + selected_sec);
+
+                    if(!optional_description.isEmpty()){
+                        Log.d(TAG, "optional description: " + optional_description);
+//                        TODO: Task.setDescription()
+                    }
+
+                }else{
+                    Log.d(TAG, "fields are missing");
+                    Toast.makeText(TaskActivity.this, "One or more fields are missing", Toast.LENGTH_SHORT).show();
+                }
             }
         });
+
+
+
+
     }
 
     public void listenForTaskColor(){
@@ -121,5 +131,19 @@ public class TaskActivity extends AppCompatActivity {
                 }
             }
         };
+    }
+
+    private boolean allFieldsAreCompleted(){
+//        private String task_title_txt;
+//        private int task_selected_color;
+//        private boolean selected_week, selected_day, selected_hour, selected_min, selected_sec = false;
+//        private String optional_description;
+
+        if(!task_title_txt.isEmpty() && task_selected_color != 0){
+            if(selected_week || selected_day || selected_hour || selected_min || selected_sec){
+                return true;
+            }
+        }
+        return false;
     }
 }
