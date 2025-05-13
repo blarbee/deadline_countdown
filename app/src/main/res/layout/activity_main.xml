@@ -41,6 +41,9 @@
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
 
+        app:labelVisibilityMode="unlabeled"
+
+
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintTop_toBottomOf="@id/bottom_guideline"
         app:menu="@menu/nav_bar_items"/>

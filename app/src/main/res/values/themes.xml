@@ -67,7 +67,7 @@
         <item name="android:textSize">12sp</item>
         <item name="android:clickable">true</item>
         <item name="android:focusable">true</item>
-        <item name="android:textColor">@color/og_black</item>
+        <item name="android:textColor">@color/og_cream</item>
         <item name="android:button">@drawable/checkbox_selector_format</item>
         <item name="android:background">@drawable/checkbox_selector_format</item>
     </style>

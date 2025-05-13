@@ -1,6 +1,12 @@
 package com.example.deadline_countdown;
 
 import android.os.Bundle;
+import android.util.Log;
+import android.view.View;
+import android.widget.Button;
+import android.widget.CheckBox;
+import android.widget.EditText;
+import android.widget.RadioGroup;
 
 import androidx.activity.EdgeToEdge;
 import androidx.appcompat.app.AppCompatActivity;
@@ -9,6 +15,15 @@ import androidx.core.view.ViewCompat;
 import androidx.core.view.WindowInsetsCompat;
 
 public class TaskActivity extends AppCompatActivity {
+    private static final String TAG = "debug";
+
+    private EditText task_title;
+    private Button save_button_v, task_date, task_time;
+    CheckBox format_week, format_day, format_hour, format_min, format_sec;
+
+    private String task_title_txt;
+    private int task_selected_color;
+    private boolean selected_week, selected_day, selected_hour, selected_min, selected_sec = false;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -21,7 +36,90 @@ public class TaskActivity extends AppCompatActivity {
             return insets;
         });
 
+//        save_button_v = findViewById(R.id.save_button);
+//        save_button_v.setEnabled(false);
+
+        listenForTaskColor();
+        listenForTaskFormat();
+        saveTaskOnClick();
 
 
+
+
+
+    }
+
+    public void saveTaskOnClick(){
+
+
+
+
+
+
+        save_button_v = findViewById(R.id.save_button);
+        save_button_v.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+                task_title = findViewById(R.id.settings_color_option);
+                task_title_txt = TaskActivity.this.task_title.getText().toString();
+                Log.d(TAG, "task_title onclicksavebutton: " + task_title_txt);
+
+                Log.d(TAG, "task_color onCheckedChanged: " + task_selected_color);
+
+                Log.d(TAG, "datetime format week = " + selected_week + " day = " + selected_day + " hour = " + selected_hour + " min = " + selected_min + " sec = " + selected_sec);
+
+            }
+        });
+    }
+
+    public void listenForTaskColor(){
+        RadioGroup task_color_group = findViewById(R.id.color_layout);
+        task_color_group.setOnCheckedChangeListener(new RadioGroup.OnCheckedChangeListener() {
+            @Override
+            public void onCheckedChanged(RadioGroup radioGroup, int id) {
+                if(findViewById(id) != null && findViewById(id).getBackgroundTintList() != null){
+                    task_selected_color = findViewById(id).getBackgroundTintList().getDefaultColor();
+                }
+            }
+        });
+    }
+
+    public void listenForTaskFormat(){
+        format_week = findViewById(R.id.format_week);
+        format_day = findViewById(R.id.format_day);
+        format_hour = findViewById(R.id.format_hour);
+        format_min = findViewById(R.id.format_min);
+        format_sec = findViewById(R.id.format_sec);
+        task_date = findViewById(R.id.date_button);
+        task_time = findViewById(R.id.time_button);
+
+        format_week.setOnClickListener(this.onClickCheckboxFormat());
+        format_day.setOnClickListener(this.onClickCheckboxFormat());
+        format_hour.setOnClickListener(this.onClickCheckboxFormat());
+        format_min.setOnClickListener(this.onClickCheckboxFormat());
+        format_sec.setOnClickListener(this.onClickCheckboxFormat());
+
+
+    }
+
+    private View.OnClickListener onClickCheckboxFormat() {
+        return new View.OnClickListener(){
+            @Override
+            public void onClick(View view) {
+                CheckBox checkbox = (CheckBox) view;
+
+                if(view.getId() == R.id.format_week && format_week.isChecked()){
+                    selected_week = true;
+                } else if (view.getId() == R.id.format_day && format_day.isChecked()){
+                    selected_day = true;
+                } else if (view.getId() == R.id.format_hour && format_hour.isChecked()) {
+                    selected_hour = true;
+                } else if (view.getId() == R.id.format_min && format_min.isChecked()) {
+                    selected_min = true;
+                } else if (view.getId() == R.id.format_sec && format_sec.isChecked()){
+                    selected_sec = true;
+                }
+            }
+        };
     }
 }

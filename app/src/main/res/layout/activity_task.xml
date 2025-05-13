@@ -232,6 +232,7 @@
 
 <!--    =================================================== USER SAVES TASK-->
     <androidx.appcompat.widget.AppCompatButton
+        android:id="@+id/save_button"
         android:layout_width="0dp"
         android:layout_height="wrap_content"
         style="@style/save_button"
