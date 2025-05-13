@@ -35,6 +35,7 @@ public class MainActivity extends AppCompatActivity {
             getSupportFragmentManager().beginTransaction().setReorderingAllowed(true).add(R.id.task_fragment_container, TaskFragment.class, bundle).commit();
         }
         replaceFragment();
+//      TODO: figure out where to store tasks and once thats done feed recycler view with the data
 
     }
 
@@ -49,18 +50,18 @@ public class MainActivity extends AppCompatActivity {
             if(item.getItemId() == R.id.home_nav){
                 getSupportFragmentManager().beginTransaction().replace(R.id.task_fragment_container, taskFragment).commit();
                 header_text.setText("Get it done in time!");
-                Toast.makeText(this, "Go to homepage", Toast.LENGTH_SHORT).show();
+//                Toast.makeText(this, "Go to homepage", Toast.LENGTH_SHORT).show();
                 return true;
             } else if (item.getItemId() == R.id.settings_nav) {
                 getSupportFragmentManager().beginTransaction().replace(R.id.task_fragment_container, settingsFragment).commit();
                 header_text.setText("Settings");
-                Toast.makeText(this, "Go to settings", Toast.LENGTH_SHORT).show();
+//                Toast.makeText(this, "Go to settings", Toast.LENGTH_SHORT).show();
                 return true;
             } else if (item.getItemId() == R.id.add_task_button) {
                 Intent myIntent = new Intent(this, TaskActivity.class);
 //                myIntent.putExtra("key", value); //Optional parameters
                 this.startActivity(myIntent);
-                Toast.makeText(this, "Add a task", Toast.LENGTH_SHORT).show();
+//                Toast.makeText(this, "Add a task", Toast.LENGTH_SHORT).show();
                 return true;
             }
             return false;

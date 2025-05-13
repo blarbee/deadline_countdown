@@ -57,7 +57,9 @@ public class TaskActivity extends AppCompatActivity {
                 task_description = findViewById(R.id.task_description);
                 optional_description = task_description.getText().toString();
                 if(allFieldsAreCompleted()){
-//                    TODO:create task object once all fields are completed and send it to mainactivity to handle
+//                    TODO:create task object once all fields are completed
+//                    TODO:send it to mainactivity to handle / save the data and let recyclerview handle it
+//                    TODO: go back to main activity once clicked and saved
 
                     Log.d(TAG, "task_title onclicksavebutton: " + task_title_txt);
 
@@ -72,14 +74,10 @@ public class TaskActivity extends AppCompatActivity {
 
                 }else{
                     Log.d(TAG, "fields are missing");
-                    Toast.makeText(TaskActivity.this, "One or more fields are missing", Toast.LENGTH_SHORT).show();
+                    Toast.makeText(TaskActivity.this, "Missing required fields", Toast.LENGTH_SHORT).show();
                 }
             }
         });
-
-
-
-
     }
 
     public void listenForTaskColor(){
@@ -108,8 +106,6 @@ public class TaskActivity extends AppCompatActivity {
         format_hour.setOnClickListener(this.onClickCheckboxFormat());
         format_min.setOnClickListener(this.onClickCheckboxFormat());
         format_sec.setOnClickListener(this.onClickCheckboxFormat());
-
-
     }
 
     private View.OnClickListener onClickCheckboxFormat() {
@@ -134,15 +130,8 @@ public class TaskActivity extends AppCompatActivity {
     }
 
     private boolean allFieldsAreCompleted(){
-//        private String task_title_txt;
-//        private int task_selected_color;
-//        private boolean selected_week, selected_day, selected_hour, selected_min, selected_sec = false;
-//        private String optional_description;
-
         if(!task_title_txt.isEmpty() && task_selected_color != 0){
-            if(selected_week || selected_day || selected_hour || selected_min || selected_sec){
-                return true;
-            }
+            return selected_week || selected_day || selected_hour || selected_min || selected_sec;
         }
         return false;
     }
