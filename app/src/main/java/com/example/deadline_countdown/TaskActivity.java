@@ -1,10 +1,12 @@
 package com.example.deadline_countdown;
 
+import android.app.DatePickerDialog;
 import android.os.Bundle;
 import android.util.Log;
 import android.view.View;
 import android.widget.Button;
 import android.widget.CheckBox;
+import android.widget.DatePicker;
 import android.widget.EditText;
 import android.widget.RadioGroup;
 import android.widget.Toast;
@@ -14,9 +16,18 @@ import androidx.appcompat.app.AppCompatActivity;
 import androidx.core.graphics.Insets;
 import androidx.core.view.ViewCompat;
 import androidx.core.view.WindowInsetsCompat;
+
+import java.text.DateFormat;
+import java.text.SimpleDateFormat;
+import java.util.Calendar;
+import java.util.Locale;
+
 //TODO: add dialogfragment listeners for date and time buttons
 public class TaskActivity extends AppCompatActivity {
     private static final String TAG = "debug";
+
+    private int current_day, current_month, current_year;
+
 
     private EditText task_title;
     private Button save_button_v, task_date, task_time;
@@ -41,7 +52,9 @@ public class TaskActivity extends AppCompatActivity {
 
 
 
+
         listenForTaskColor();
+        listenForDate();
         listenForTaskFormat();
         saveTaskOnClick();
 
@@ -90,6 +103,37 @@ public class TaskActivity extends AppCompatActivity {
                 }
             }
         });
+    }
+
+    public void listenForDate(){
+        task_date = findViewById(R.id.date_button);
+        task_date.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+                openDateDialog();
+            }
+        });
+    }
+
+    public void openDateDialog(){
+        Calendar calendar = Calendar.getInstance();
+        current_day = calendar.get(Calendar.DAY_OF_MONTH);
+        current_month = calendar.get(Calendar.MONTH);
+        current_year = calendar.get(Calendar.YEAR);
+
+        DatePickerDialog datePickerDialog = new DatePickerDialog(this, new DatePickerDialog.OnDateSetListener() {
+            @Override
+            public void onDateSet(DatePicker datePicker, int year, int month, int day) {
+                calendar.set(Calendar.YEAR, year);
+                calendar.set(Calendar.MONTH, month);
+                calendar.set(Calendar.DAY_OF_MONTH, day);
+                DateFormat dateFormat = new SimpleDateFormat("dd/MM/yyyy", Locale.getDefault());
+                String formattedDate = dateFormat.format(calendar.getTime());
+
+                task_date.setText(formattedDate);
+            }
+        }, current_year, current_month, current_day);
+        datePickerDialog.show();
     }
 
     public void listenForTaskFormat(){

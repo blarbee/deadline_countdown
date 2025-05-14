@@ -189,9 +189,9 @@
         android:layout_height="wrap_content"
         style="@style/date_time"
         android:layout_marginTop="50sp"
+        android:padding="10sp"
 
         android:text="Date"
-
         app:layout_constraintTop_toBottomOf="@id/color_layout"
         app:layout_constraintRight_toLeftOf="@id/time_button"
         app:layout_constraintLeft_toRightOf="@id/left_guideline"
@@ -204,10 +204,9 @@
         android:layout_height="wrap_content"
         style="@style/date_time"
         android:layout_marginTop="50sp"
-        android:textAllCaps="false"
+        android:padding="10sp"
 
         android:text="Time"
-
         app:layout_constraintTop_toBottomOf="@id/color_layout"
         app:layout_constraintRight_toLeftOf="@id/right_guideline"
         app:layout_constraintLeft_toRightOf="@id/date_button"
