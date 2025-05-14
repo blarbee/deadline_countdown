@@ -1,6 +1,7 @@
 package com.example.deadline_countdown;
 
 import android.app.DatePickerDialog;
+import android.app.TimePickerDialog;
 import android.os.Bundle;
 import android.util.Log;
 import android.view.View;
@@ -9,6 +10,7 @@ import android.widget.CheckBox;
 import android.widget.DatePicker;
 import android.widget.EditText;
 import android.widget.RadioGroup;
+import android.widget.TimePicker;
 import android.widget.Toast;
 
 import androidx.activity.EdgeToEdge;
@@ -26,8 +28,8 @@ import java.util.Locale;
 public class TaskActivity extends AppCompatActivity {
     private static final String TAG = "debug";
 
-    private int current_day, current_month, current_year;
-
+    Calendar calendar = Calendar.getInstance();
+    private int current_day, current_month, current_year, current_hour, current_minute;
 
     private EditText task_title;
     private Button save_button_v, task_date, task_time;
@@ -55,6 +57,7 @@ public class TaskActivity extends AppCompatActivity {
 
         listenForTaskColor();
         listenForDate();
+        listenForTime();
         listenForTaskFormat();
         saveTaskOnClick();
 
@@ -116,7 +119,6 @@ public class TaskActivity extends AppCompatActivity {
     }
 
     public void openDateDialog(){
-        Calendar calendar = Calendar.getInstance();
         current_day = calendar.get(Calendar.DAY_OF_MONTH);
         current_month = calendar.get(Calendar.MONTH);
         current_year = calendar.get(Calendar.YEAR);
@@ -135,6 +137,34 @@ public class TaskActivity extends AppCompatActivity {
         }, current_year, current_month, current_day);
         datePickerDialog.show();
     }
+
+    private void listenForTime(){
+        task_time = findViewById(R.id.time_button);
+        task_time.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {openTimeDialog();}
+        });
+    }
+
+    private void openTimeDialog(){
+        current_hour = calendar.get(Calendar.HOUR);
+        current_minute = calendar.get(Calendar.MINUTE);
+
+        TimePickerDialog timePickerDialog = new TimePickerDialog(this, new TimePickerDialog.OnTimeSetListener() {
+            @Override
+            public void onTimeSet(TimePicker timePicker, int hour, int min) {
+                calendar.set(Calendar.HOUR_OF_DAY, hour);
+                calendar.set(Calendar.MINUTE, min);
+
+                SimpleDateFormat timeFormat = new SimpleDateFormat("HH:mm", Locale.getDefault());
+                String formattedTime = timeFormat.format(calendar.getTime());
+
+                task_time.setText(formattedTime);
+            }
+        }, current_hour, current_minute, true);
+        timePickerDialog.show();
+    }
+
 
     public void listenForTaskFormat(){
         format_week = findViewById(R.id.format_week);
