@@ -35,6 +35,14 @@ android {
 }
 
 dependencies {
+    val room_version = "2.7.1"
+
+    implementation("androidx.room:room-runtime:$room_version")
+
+    // If this project only uses Java source, use the Java annotationProcessor
+    // No additional plugins are necessary
+    annotationProcessor("androidx.room:room-compiler:$room_version")
+
     implementation(libs.flexbox)
     implementation(libs.appcompat)
     implementation(libs.material)

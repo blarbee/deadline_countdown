@@ -1,7 +1,16 @@
 package com.example.deadline_countdown;
 
+import androidx.annotation.NonNull;
+import androidx.core.content.ContextCompat;
+import androidx.core.view.ViewCompat;
+import androidx.recyclerview.widget.DiffUtil;
 import androidx.recyclerview.widget.RecyclerView;
 
+import android.content.Context;
+import android.content.res.ColorStateList;
+import android.graphics.Color;
+import android.graphics.drawable.ColorDrawable;
+import android.os.CountDownTimer;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
@@ -10,7 +19,11 @@ import android.widget.TextView;
 import com.example.deadline_countdown.placeholder.PlaceholderContent.PlaceholderItem;
 import com.example.deadline_countdown.databinding.FragmentItemBinding;
 
+import java.text.SimpleDateFormat;
+import java.util.ArrayList;
+import java.util.Date;
 import java.util.List;
+import java.util.Locale;
 
 /**
  * {@link RecyclerView.Adapter} that can display a {@link PlaceholderItem}.
@@ -18,9 +31,9 @@ import java.util.List;
  */
 public class MyTaskRecyclerViewAdapter extends RecyclerView.Adapter<MyTaskRecyclerViewAdapter.ViewHolder> {
 
-    private final List<PlaceholderItem> mValues;
+    private final List<Task> mValues;
 
-    public MyTaskRecyclerViewAdapter(List<PlaceholderItem> items) {
+    public MyTaskRecyclerViewAdapter(List<Task> items) {
         mValues = items;
     }
 
@@ -33,9 +46,33 @@ public class MyTaskRecyclerViewAdapter extends RecyclerView.Adapter<MyTaskRecycl
 
     @Override
     public void onBindViewHolder(final ViewHolder holder, int position) {
-        holder.mItem = mValues.get(position);
-        holder.mIdView.setText(mValues.get(position).id);
-        holder.mContentView.setText(mValues.get(position).content);
+
+        // Annuler tout timer existant avant de lier de nouvelles donnees
+        if (holder.countdownTimer != null) {
+            holder.countdownTimer.cancel();
+            holder.countdownTimer = null;
+        }
+
+        Task currentTask = mValues.get(position);
+        holder.mTask = currentTask;
+        holder.mTitleView.setText(currentTask.getTitle());
+
+        // Mettre a jour la couleur de fond
+        String colorName = currentTask.getColor();
+        int colorResId = holder.mRootView.getResources().getIdentifier(colorName, "color",
+                holder.mRootView.getContext().getPackageName());
+        int color = ContextCompat.getColor(holder.mRootView.getContext(), colorResId);
+        ViewCompat.setBackgroundTintList(holder.mRootView, ColorStateList.valueOf(color));
+
+        // Creer et demarrer un nouveau timer
+        holder.countdownTimer = createCountdownTimer(
+                currentTask.getDate_and_time(),
+                currentTask.getFormat(),
+                holder.mCountdownView
+        );
+        if (holder.countdownTimer != null) {
+            holder.countdownTimer.start();
+        }
     }
 
     @Override
@@ -44,19 +81,91 @@ public class MyTaskRecyclerViewAdapter extends RecyclerView.Adapter<MyTaskRecycl
     }
 
     public class ViewHolder extends RecyclerView.ViewHolder {
-        public final TextView mIdView;
-        public final TextView mContentView;
-        public PlaceholderItem mItem;
+        public final TextView mTitleView;
+        public final TextView mCountdownView;
+        public Task mTask;
+
+        public CountDownTimer countdownTimer = null;
+
+        public final View mRootView;
 
         public ViewHolder(FragmentItemBinding binding) {
             super(binding.getRoot());
-            mIdView = binding.itemNumber;
-            mContentView = binding.content;
+            mTitleView = binding.itemTitle;
+            mCountdownView = binding.itemCountdown;
+
+            mRootView = binding.getRoot();
         }
 
         @Override
         public String toString() {
-            return super.toString() + " '" + mContentView.getText() + "'";
+            return super.toString() + " '" + mCountdownView.getText() + "'";
         }
     }
+
+    @Override
+    public void onViewRecycled(@NonNull ViewHolder holder) {
+        super.onViewRecycled(holder);
+        if (holder.countdownTimer != null) {
+            holder.countdownTimer.cancel();
+            holder.countdownTimer = null;
+        }
+
+
+    }
+
+    private CountDownTimer createCountdownTimer(String targetDateStr, String formatStr, TextView countdownView) {
+        try {
+            SimpleDateFormat sdf = new SimpleDateFormat("dd/MM/yyyy HH:mm", Locale.getDefault());
+            Date targetDate = sdf.parse(targetDateStr);
+            long targetMillis = targetDate.getTime();
+            long currentMillis = System.currentTimeMillis();
+            long diff = targetMillis - currentMillis;
+
+            if (diff > 0) {
+                return new CountDownTimer(diff, 1000) {
+                    @Override
+                    public void onTick(long millisUntilFinished) {
+                        long seconds = millisUntilFinished / 1000;
+                        long weeks = seconds / (7 * 24 * 3600);
+                        long days = (seconds % (7 * 24 * 3600)) / (24 * 3600);
+                        long hours = (seconds % (24 * 3600)) / 3600;
+                        long minutes = (seconds % 3600) / 60;
+                        long secs = seconds % 60;
+
+                        StringBuilder display = new StringBuilder();
+                        if (formatStr.contains("week")) display.append(weeks).append("w ");
+                        if (formatStr.contains("day")) display.append(days).append("d ");
+                        if (formatStr.contains("hour")) display.append(hours).append("h ");
+                        if (formatStr.contains("min")) display.append(minutes).append("m ");
+                        if (formatStr.contains("sec")) display.append(secs).append("s");
+
+                        countdownView.setText(display.toString().trim());
+                    }
+
+                    @Override
+                    public void onFinish() {
+                        countdownView.setText("It's too late now");
+                    }
+                };
+            } else {
+                countdownView.setText("That deadline is in the past already");
+            }
+
+        } catch (Exception e) {
+            countdownView.setText("Invalid date format");
+            e.printStackTrace();
+        }
+
+        return null;
+    }
+
+    public void setData(List<Task> newTasks) {
+
+        mValues.clear();
+        mValues.addAll(newTasks);
+        notifyDataSetChanged();
+    }
+
+
 }
