@@ -31,6 +31,7 @@ public class MainActivity extends AppCompatActivity {
     TaskFragment taskFragment = new TaskFragment();
     SettingsFragment settingsFragment = new SettingsFragment();
 
+
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);

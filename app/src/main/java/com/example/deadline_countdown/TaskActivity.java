@@ -30,7 +30,7 @@ import java.util.Locale;
 import java.util.Objects;
 import java.util.concurrent.Executors;
 
-//TODO: add dialogfragment listeners for date and time buttons
+
 public class TaskActivity extends AppCompatActivity {
 
     TaskDAO dao ;
@@ -82,9 +82,7 @@ public class TaskActivity extends AppCompatActivity {
                 String format = getSelectedFormatString();
                 String date = String.format(Locale.getDefault(), "%02d/%02d/%04d %02d:%02d", task_day, task_month, task_year, task_hour, task_min);
                 if(allFieldsAreCompleted()){
-//                    TODO:create task object once all fields are completed
-//                    TODO:send it to mainactivity to handle / save the data and let recyclerview handle it
-//                    TODO: go back to main activity once clicked and saved
+
 
 
                     Log.d(TAG, "saveTaskOnClick() Task's title:  " + task_title_txt);

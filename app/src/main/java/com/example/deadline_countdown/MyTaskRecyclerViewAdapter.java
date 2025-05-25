@@ -1,5 +1,7 @@
 package com.example.deadline_countdown;
 
+import static androidx.core.content.ContentProviderCompat.requireContext;
+
 import androidx.annotation.NonNull;
 import androidx.core.content.ContextCompat;
 import androidx.core.view.ViewCompat;
@@ -14,6 +16,7 @@ import android.os.CountDownTimer;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
+import android.widget.Button;
 import android.widget.TextView;
 
 import com.example.deadline_countdown.placeholder.PlaceholderContent.PlaceholderItem;
@@ -24,12 +27,15 @@ import java.util.ArrayList;
 import java.util.Date;
 import java.util.List;
 import java.util.Locale;
+import java.util.concurrent.Executors;
 
 /**
  * {@link RecyclerView.Adapter} that can display a {@link PlaceholderItem}.
- * TODO: Replace the implementation with code for your data type.
+
  */
 public class MyTaskRecyclerViewAdapter extends RecyclerView.Adapter<MyTaskRecyclerViewAdapter.ViewHolder> {
+    private TaskDAO dao;
+    Context context;
 
     private final List<Task> mValues;
 
@@ -46,7 +52,6 @@ public class MyTaskRecyclerViewAdapter extends RecyclerView.Adapter<MyTaskRecycl
 
     @Override
     public void onBindViewHolder(final ViewHolder holder, int position) {
-
         // Annuler tout timer existant avant de lier de nouvelles donnees
         if (holder.countdownTimer != null) {
             holder.countdownTimer.cancel();
@@ -57,14 +62,22 @@ public class MyTaskRecyclerViewAdapter extends RecyclerView.Adapter<MyTaskRecycl
         holder.mTask = currentTask;
         holder.mTitleView.setText(currentTask.getTitle());
 
-        // Mettre a jour la couleur de fond
         String colorName = currentTask.getColor();
-        int colorResId = holder.mRootView.getResources().getIdentifier(colorName, "color",
-                holder.mRootView.getContext().getPackageName());
+        int colorResId = holder.mRootView.getResources().getIdentifier(colorName, "color", holder.mRootView.getContext().getPackageName());
         int color = ContextCompat.getColor(holder.mRootView.getContext(), colorResId);
         ViewCompat.setBackgroundTintList(holder.mRootView, ColorStateList.valueOf(color));
 
-        // Creer et demarrer un nouveau timer
+        AppDatabase db = AppDatabase.getInstance(context);
+        dao = db.taskDao();
+        holder.mDeleteView.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+                Executors.newSingleThreadExecutor().execute(() -> {
+                    dao.delete(currentTask);
+                });
+            }
+        });
+
         holder.countdownTimer = createCountdownTimer(
                 currentTask.getDate_and_time(),
                 currentTask.getFormat(),
@@ -83,6 +96,7 @@ public class MyTaskRecyclerViewAdapter extends RecyclerView.Adapter<MyTaskRecycl
     public class ViewHolder extends RecyclerView.ViewHolder {
         public final TextView mTitleView;
         public final TextView mCountdownView;
+        public final Button mDeleteView;
         public Task mTask;
 
         public CountDownTimer countdownTimer = null;
@@ -93,6 +107,7 @@ public class MyTaskRecyclerViewAdapter extends RecyclerView.Adapter<MyTaskRecycl
             super(binding.getRoot());
             mTitleView = binding.itemTitle;
             mCountdownView = binding.itemCountdown;
+            mDeleteView  = binding.itemDelButton;
 
             mRootView = binding.getRoot();
         }
@@ -161,7 +176,6 @@ public class MyTaskRecyclerViewAdapter extends RecyclerView.Adapter<MyTaskRecycl
     }
 
     public void setData(List<Task> newTasks) {
-
         mValues.clear();
         mValues.addAll(newTasks);
         notifyDataSetChanged();

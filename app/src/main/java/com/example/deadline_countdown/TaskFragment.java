@@ -23,9 +23,7 @@ public class TaskFragment extends Fragment {
     private Context context;
     private TaskDAO dao;
 
-    // TODO: Customize parameter argument names
     private static final String ARG_COLUMN_COUNT = "column-count";
-    // TODO: Customize parameters
     private int mColumnCount = 1;
 
     /**
@@ -35,7 +33,6 @@ public class TaskFragment extends Fragment {
     public TaskFragment() {
     }
 
-    // TODO: Customize parameter initialization
     @SuppressWarnings("unused")
     public static TaskFragment newInstance(int columnCount) {
         TaskFragment fragment = new TaskFragment();
@@ -82,6 +79,7 @@ public class TaskFragment extends Fragment {
                     adapter.setData(tasks);
                 }
             });
+
         }
 
         return view;
