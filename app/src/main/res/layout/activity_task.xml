@@ -20,7 +20,7 @@
             android:id="@+id/header_tv"
             android:layout_width="match_parent"
             android:layout_height="match_parent"
-            android:text="Set a timer"
+            android:text="@string/set_a_timer"
             style="@style/header"/>
     </androidx.appcompat.widget.Toolbar>
 
@@ -31,7 +31,7 @@
         android:layout_height="48dp"
         android:layout_marginTop="10dp"
         android:autofillHints=""
-        android:hint="Name your task..."
+        android:hint="@string/name_your_task"
         android:inputType="text"
         app:layout_constraintLeft_toRightOf="@id/left_guideline"
         app:layout_constraintRight_toLeftOf="@id/right_guideline"
@@ -41,7 +41,7 @@
         android:id="@+id/pick_color"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:text="Pick a color for it..."
+        android:text="@string/pick_a_color_for_it"
         android:layout_marginTop="40dp"
         android:textColor="@color/og_cream"
         android:fontFamily="@font/robotoslab_regular"
@@ -50,21 +50,6 @@
         app:layout_constraintLeft_toRightOf="@id/left_text_guideline" />
 
 
-
-<!--    <com.google.android.flexbox.FlexboxLayout-->
-<!--        android:id="@+id/color_layout"-->
-<!--        android:layout_width="0dp"-->
-<!--        android:layout_height="60sp"-->
-<!--        android:layout_marginTop="15dp"-->
-
-<!--        app:flexWrap="wrap"-->
-<!--        app:alignItems="stretch"-->
-<!--        app:alignContent="space_around"-->
-<!--        app:justifyContent="space_between"-->
-
-<!--        app:layout_constraintTop_toBottomOf="@id/pick_color"-->
-<!--        app:layout_constraintLeft_toLeftOf="@id/left_guideline"-->
-<!--        app:layout_constraintRight_toRightOf="@id/right_guideline">-->
 
 
 <!--    =================================================== USER PICKS A COLOR-->
@@ -84,7 +69,6 @@
             style="@style/checkbox_color"
             android:layout_width="80sp"
             android:layout_height="match_parent"
-            android:contentDescription="TODO"
             android:layout_marginRight="15sp"/>
         <androidx.appcompat.widget.AppCompatRadioButton
             android:id="@+id/og_green"
@@ -92,7 +76,6 @@
             android:layout_height="match_parent"
             style="@style/checkbox_color"
             android:backgroundTint="@color/og_green"
-            android:contentDescription="TODO"
             tools:ignore="MissingConstraints"
             android:layout_marginRight="15sp"/>
         <androidx.appcompat.widget.AppCompatRadioButton
@@ -101,7 +84,6 @@
             android:layout_width="80sp"
             android:layout_height="match_parent"
             android:backgroundTint="@color/og_white"
-            android:contentDescription="TODO"
             tools:ignore="MissingConstraints"
             android:layout_marginRight="15sp"/>
         <androidx.appcompat.widget.AppCompatRadioButton
@@ -109,24 +91,18 @@
             style="@style/checkbox_color"
             android:layout_width="80sp"
             android:layout_height="match_parent"
-            android:contentDescription="TODO"
             android:backgroundTint="@color/og_orange"
             tools:ignore="MissingConstraints"
             />
 
     </RadioGroup>
 
-
-<!--    </com.google.android.flexbox.FlexboxLayout>-->
-
-
-
 <!--    =================================================== USER PICKS A FORMAT-->
     <TextView
         android:id="@+id/which"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:text="Choose a format for the countdown..."
+        android:text="@string/choose_a_format_for_the_countdown"
         android:layout_marginTop="40dp"
         android:textColor="@color/og_cream"
         android:fontFamily="@font/robotoslab_regular"
@@ -153,31 +129,31 @@
             style="@style/checkbox"
             android:layout_width="60dp"
             android:layout_height="40sp"
-            android:text="Week" />
+            android:text="@string/week" />
         <androidx.appcompat.widget.AppCompatCheckBox
             android:id="@+id/format_day"
             style="@style/checkbox"
             android:layout_width="60dp"
             android:layout_height="40sp"
-            android:text="Day" />
+            android:text="@string/day" />
         <androidx.appcompat.widget.AppCompatCheckBox
             android:id="@+id/format_hour"
             style="@style/checkbox"
             android:layout_width="60dp"
             android:layout_height="40sp"
-            android:text="Hour"/>
+            android:text="@string/hour"/>
         <androidx.appcompat.widget.AppCompatCheckBox
             android:id="@+id/format_min"
             style="@style/checkbox"
             android:layout_width="60dp"
             android:layout_height="40sp"
-            android:text="Min" />
+            android:text="@string/min" />
         <androidx.appcompat.widget.AppCompatCheckBox
             android:id="@+id/format_sec"
             style="@style/checkbox"
             android:layout_width="60dp"
             android:layout_height="48sp"
-            android:text="Sec" />
+            android:text="@string/sec" />
     </com.google.android.flexbox.FlexboxLayout>
 
 
@@ -192,7 +168,7 @@
         android:layout_marginTop="50sp"
         android:padding="10sp"
 
-        android:text="Date"
+        android:text="@string/date"
         app:layout_constraintTop_toBottomOf="@id/color_layout"
         app:layout_constraintRight_toLeftOf="@id/time_button"
         app:layout_constraintLeft_toRightOf="@id/left_guideline"
@@ -207,7 +183,7 @@
         android:layout_marginTop="50sp"
         android:padding="10sp"
 
-        android:text="Time"
+        android:text="@string/time"
         app:layout_constraintTop_toBottomOf="@id/color_layout"
         app:layout_constraintRight_toLeftOf="@id/right_guideline"
         app:layout_constraintLeft_toRightOf="@id/date_button"
@@ -221,7 +197,7 @@
         android:layout_height="wrap_content"
         android:layout_marginTop="60sp"
         android:textColorHint="@color/og_white"
-        android:hint="Description (optional)"
+        android:hint="@string/description_optional"
         android:fontFamily="@font/robotoslab_light"
 
         app:layout_constraintTop_toBottomOf="@id/pick_format"
@@ -236,7 +212,7 @@
         android:layout_height="wrap_content"
         style="@style/save_button"
         android:textAllCaps="false"
-        android:text="Save this task"
+        android:text="@string/save_this_task"
 
 
         app:layout_constraintLeft_toRightOf="@id/left_guideline"

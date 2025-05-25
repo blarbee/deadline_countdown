@@ -43,18 +43,18 @@ public class MainActivity extends AppCompatActivity {
     public void replaceFragment(){
         TextView header_text = findViewById(R.id.header_tv);
         getSupportFragmentManager().beginTransaction().replace(R.id.task_fragment_container, taskFragment).commit();
-        header_text.setText("Get it done in time!");
+        header_text.setText(R.string.get_it_done_in_time);
 
         BottomNavigationView nav = findViewById(R.id.nav_bar);
         nav.setOnItemSelectedListener(item ->{
 
             if(item.getItemId() == R.id.home_nav){
                 getSupportFragmentManager().beginTransaction().replace(R.id.task_fragment_container, taskFragment).commit();
-                header_text.setText("Get it done in time!");
+                header_text.setText(R.string.get_it_done_in_time);
                 return true;
             } else if (item.getItemId() == R.id.settings_nav) {
                 getSupportFragmentManager().beginTransaction().replace(R.id.task_fragment_container, settingsFragment).commit();
-                header_text.setText("Settings");
+                header_text.setText(R.string.settings);
                 return true;
             } else if (item.getItemId() == R.id.add_task_button) {
                 Intent myIntent = new Intent(this, TaskActivity.class);

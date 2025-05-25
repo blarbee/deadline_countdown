@@ -17,6 +17,7 @@ import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
 import android.widget.Button;
+import android.widget.ImageButton;
 import android.widget.TextView;
 
 import com.example.deadline_countdown.placeholder.PlaceholderContent.PlaceholderItem;
@@ -96,7 +97,7 @@ public class MyTaskRecyclerViewAdapter extends RecyclerView.Adapter<MyTaskRecycl
     public class ViewHolder extends RecyclerView.ViewHolder {
         public final TextView mTitleView;
         public final TextView mCountdownView;
-        public final Button mDeleteView;
+        public final ImageButton mDeleteView;
         public Task mTask;
 
         public CountDownTimer countdownTimer = null;
