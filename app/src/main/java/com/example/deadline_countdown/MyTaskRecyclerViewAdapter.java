@@ -134,6 +134,7 @@ public class MyTaskRecyclerViewAdapter extends RecyclerView.Adapter<MyTaskRecycl
         try {
             SimpleDateFormat sdf = new SimpleDateFormat("dd/MM/yyyy HH:mm", Locale.getDefault());
             Date targetDate = sdf.parse(targetDateStr);
+            assert targetDate != null;
             long targetMillis = targetDate.getTime();
             long currentMillis = System.currentTimeMillis();
             long diff = targetMillis - currentMillis;
@@ -142,20 +143,37 @@ public class MyTaskRecyclerViewAdapter extends RecyclerView.Adapter<MyTaskRecycl
                 return new CountDownTimer(diff, 1000) {
                     @Override
                     public void onTick(long millisUntilFinished) {
-                        long seconds = millisUntilFinished / 1000;
-                        long weeks = seconds / (7 * 24 * 3600);
-                        long days = (seconds % (7 * 24 * 3600)) / (24 * 3600);
-                        long hours = (seconds % (24 * 3600)) / 3600;
-                        long minutes = (seconds % 3600) / 60;
-                        long secs = seconds % 60;
-
+                        long remaining = millisUntilFinished;
                         StringBuilder display = new StringBuilder();
-                        if (formatStr.contains("week")) display.append(weeks).append("w ");
-                        if (formatStr.contains("day")) display.append(days).append("d ");
-                        if (formatStr.contains("hour")) display.append(hours).append("h ");
-                        if (formatStr.contains("min")) display.append(minutes).append("m ");
-                        if (formatStr.contains("sec")) display.append(secs).append("s");
 
+                        if (formatStr.contains("week")) {
+                            long weeks = remaining / (7 * 24 * 60 * 60 * 1000L);
+                            display.append(weeks).append("w ");
+                            remaining %= (7 * 24 * 60 * 60 * 1000L);
+                        }
+
+                        if (formatStr.contains("day")) {
+                            long days = remaining / (24 * 60 * 60 * 1000L);
+                            display.append(days).append("d ");
+                            remaining %= (24 * 60 * 60 * 1000L);
+                        }
+
+                        if (formatStr.contains("hour")) {
+                            long hours = remaining / (60 * 60 * 1000L);
+                            display.append(hours).append("h ");
+                            remaining %= (60 * 60 * 1000L);
+                        }
+
+                        if (formatStr.contains("min")) {
+                            long minutes = remaining / (60 * 1000L);
+                            display.append(minutes).append("m ");
+                            remaining %= (60 * 1000L);
+                        }
+
+                        if (formatStr.contains("sec")) {
+                            long seconds = remaining / 1000L;
+                            display.append(seconds).append("s");
+                        }
                         countdownView.setText(display.toString().trim());
                     }
 
@@ -165,7 +183,7 @@ public class MyTaskRecyclerViewAdapter extends RecyclerView.Adapter<MyTaskRecycl
                     }
                 };
             } else {
-                countdownView.setText("That deadline is in the past already");
+                countdownView.setText("That deadline is already in the past");
             }
 
         } catch (Exception e) {
