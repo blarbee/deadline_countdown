@@ -39,9 +39,11 @@ public class MyTaskRecyclerViewAdapter extends RecyclerView.Adapter<MyTaskRecycl
     Context context;
 
     private final List<Task> mValues;
+    private final OnTaskClickListener listener;
 
-    public MyTaskRecyclerViewAdapter(List<Task> items) {
+    public MyTaskRecyclerViewAdapter(List<Task> items, OnTaskClickListener listener) {
         mValues = items;
+        this.listener = listener;
     }
 
     @Override
@@ -62,6 +64,7 @@ public class MyTaskRecyclerViewAdapter extends RecyclerView.Adapter<MyTaskRecycl
         Task currentTask = mValues.get(position);
         holder.mTask = currentTask;
         holder.mTitleView.setText(currentTask.getTitle());
+        holder.itemView.setOnClickListener(v -> listener.OnTaskClick(currentTask));
 
         String colorName = currentTask.getColor();
         int colorResId = holder.mRootView.getResources().getIdentifier(colorName, "color", holder.mRootView.getContext().getPackageName());

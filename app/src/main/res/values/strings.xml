@@ -20,22 +20,22 @@
 <!--</resources>-->
 
 <resources>
-<string name="app_name">Deadline_Countdown</string>
-<string name="hello_blank_fragment">Hello blank fragment</string>
-<string name="set_a_timer">Set a timer</string>
-<string name="name_your_task">Name your task...</string>
-<string name="pick_a_color_for_it">Pick a color for it...</string>
-<string name="choose_a_format_for_the_countdown">Choose a format for the countdown...</string>
-<string name="week">Week</string>
-<string name="day">Day</string>
-<string name="hour">Hour</string>
-<string name="min">Min</string>
-<string name="sec">Sec</string>
-<string name="coming_soon">Coming soon...</string>
-<string name="get_it_done_in_time">Get it done in time!</string>
-<string name="settings">Settings</string>
-<string name="date">Date</string>
-<string name="time">Time</string>
-<string name="description_optional">Description (optional)</string>
-<string name="save_this_task">Save this task</string>
+    <string name="app_name">Deadline_Countdown</string>
+    <string name="hello_blank_fragment">Hello blank fragment</string>
+    <string name="set_a_timer">Set a timer</string>
+    <string name="name_your_task">Name your task...</string>
+    <string name="pick_a_color_for_it">Pick a color for it...</string>
+    <string name="choose_a_format_for_the_countdown">Choose a format for the countdown...</string>
+    <string name="week">Week</string>
+    <string name="day">Day</string>
+    <string name="hour">Hour</string>
+    <string name="min">Min</string>
+    <string name="sec">Sec</string>
+    <string name="coming_soon">Coming soon...</string>
+    <string name="get_it_done_in_time">Get it done in time!</string>
+    <string name="settings">Settings</string>
+    <string name="date">Date</string>
+    <string name="time">Time</string>
+    <string name="description_optional">Description (optional)</string>
+    <string name="save_this_task">Save this task</string>
 </resources>

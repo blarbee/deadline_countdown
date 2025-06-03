@@ -9,6 +9,7 @@ import androidx.recyclerview.widget.GridLayoutManager;
 import androidx.recyclerview.widget.LinearLayoutManager;
 import androidx.recyclerview.widget.RecyclerView;
 
+import android.util.Log;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
@@ -20,6 +21,8 @@ import java.util.List;
  * A fragment representing a list of Items.
  */
 public class TaskFragment extends Fragment {
+    private static String TAG = "debug";
+
     private Context context;
     private TaskDAO dao;
 
@@ -71,7 +74,13 @@ public class TaskFragment extends Fragment {
             }
 
             // Initialiser avec une liste vide
-            MyTaskRecyclerViewAdapter adapter = new MyTaskRecyclerViewAdapter(new ArrayList<>());
+            MyTaskRecyclerViewAdapter adapter = new MyTaskRecyclerViewAdapter(new ArrayList<>(), task -> {
+                Log.d(TAG, "TaskFragment clicked on a task : " + task.id + " Title : " + task.getTitle());
+
+                Intent intent = new Intent(getActivity(), EditActivity.class);
+                intent.putExtra("task_id", task.id);
+                startActivity(intent);
+            });
             recyclerView.setAdapter(adapter);
 
             dao.getAllTasks().observe(getViewLifecycleOwner(), tasks -> {
