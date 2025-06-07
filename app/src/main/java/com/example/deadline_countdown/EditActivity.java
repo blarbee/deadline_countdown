@@ -42,7 +42,7 @@ public class EditActivity extends AppCompatActivity {
     EditText task_description;
 
     private int task_day, task_month, task_year, task_hour, task_min;
-    private boolean selected_week, selected_day, selected_hour, selected_min, selected_sec = false;
+    private boolean selected_week, selected_day, selected_hour, selected_min, selected_sec;
     private String optional_description = "";
 
 
@@ -107,12 +107,39 @@ public class EditActivity extends AppCompatActivity {
         dateButton.setText(datePart);
         timeButton.setText(timePart);
 
+        format_week = findViewById(R.id.format_week);
+        format_day = findViewById(R.id.format_day);
+        format_hour = findViewById(R.id.format_hour);
+        format_min = findViewById(R.id.format_min);
+        format_sec = findViewById(R.id.format_sec);
+        task_date = findViewById(R.id.date_button);
+        task_time = findViewById(R.id.time_button);
 
+        if (current_task.getFormat().contains("week")){
+            format_week.setChecked(true);
+            selected_week = true;
+        }
+        if (current_task.getFormat().contains("day")){
+            format_day.setChecked(true);
+            selected_day = true;
+        }
+        if (current_task.getFormat().contains("hour")){
+            format_hour.setChecked(true);
+            selected_hour = true;
+        }
+        if (current_task.getFormat().contains("min")){
+            format_min.setChecked(true);
+            selected_min = true;
+        }
+        if (current_task.getFormat().contains("sec")){
+            format_sec.setChecked(true);
+            selected_sec = true;
+        }
 
-
-
-
-
+        task_description = findViewById(R.id.task_description);
+        if(current_task.getDescription() != ""){
+            task_description.setText(current_task.getDescription());
+        }
 
     }
 
@@ -125,8 +152,8 @@ public class EditActivity extends AppCompatActivity {
                 task_title = findViewById(R.id.settings_color_option);
 
                 current_task.setTitle(task_title.getText().toString());
-                task_description = findViewById(R.id.task_description);
-                current_task.setDescription(task_description.getText().toString());
+
+                optional_description = String.valueOf(task_description.getText());
                 String format = getSelectedFormatString();
                 String date = String.format(Locale.getDefault(), "%02d/%02d/%04d %02d:%02d", task_day, task_month, task_year, task_hour, task_min);
                 if(allFieldsAreCompleted()){
@@ -146,7 +173,8 @@ public class EditActivity extends AppCompatActivity {
                     if(!task_description.getText().isEmpty()){
                         Log.d(TAG, "saveTaskOnClick() Task's optional description: " + optional_description);
                         current_task.setDescription(optional_description);
-
+                    }else{
+                        current_task.setDescription("");
                     }
                     Executors.newSingleThreadExecutor().execute(() -> {
                         dao.update(current_task);
@@ -241,13 +269,7 @@ public class EditActivity extends AppCompatActivity {
     }
 
     public void listenForTaskFormat(){
-        format_week = findViewById(R.id.format_week);
-        format_day = findViewById(R.id.format_day);
-        format_hour = findViewById(R.id.format_hour);
-        format_min = findViewById(R.id.format_min);
-        format_sec = findViewById(R.id.format_sec);
-        task_date = findViewById(R.id.date_button);
-        task_time = findViewById(R.id.time_button);
+
 
         format_week.setOnClickListener(this.onClickCheckboxFormat());
         format_day.setOnClickListener(this.onClickCheckboxFormat());
