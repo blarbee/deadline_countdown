@@ -24,6 +24,10 @@ public class Task implements Serializable {
         this.date_and_time = date_and_time;
     }
 
+    public int getId() {
+        return id;
+    }
+
     public String getTitle(){ return title; }
 
     public String getColor() { return color;}
@@ -33,6 +37,18 @@ public class Task implements Serializable {
     public String getDate_and_time(){ return date_and_time; }
 
     public String getDescription() { return description; }
+
+    public void setTitle(String title){ this.title = title;}
+
+    public void setColor(String color) {this.color = color;}
+
+    public void setDate_and_time(String date_and_time) {
+        this.date_and_time = date_and_time;
+    }
+
+    public void setFormat(String format) {
+        this.format = format;
+    }
 
     public void setDescription(String description) {
         this.description = description;

@@ -78,12 +78,13 @@ public class TaskFragment extends Fragment {
                 Log.d(TAG, "TaskFragment clicked on a task : " + task.id + " Title : " + task.getTitle());
 
                 Intent intent = new Intent(getActivity(), EditActivity.class);
-                intent.putExtra("task_id", task.id);
-                intent.putExtra("task_title", task.getTitle());
-                intent.putExtra("task_color", task.getColor());
-                intent.putExtra("task_format", task.getFormat());
-                intent.putExtra("task_date_and_time", task.getDate_and_time());
-                intent.putExtra("task_description", task.getDescription());
+                intent.putExtra("task", task);
+//                intent.putExtra("task_id", task.id);
+//                intent.putExtra("task_title", task.getTitle());
+//                intent.putExtra("task_color", task.getColor());
+//                intent.putExtra("task_format", task.getFormat());
+//                intent.putExtra("task_date_and_time", task.getDate_and_time());
+//                intent.putExtra("task_description", task.getDescription());
                 startActivity(intent);
             });
             recyclerView.setAdapter(adapter);
