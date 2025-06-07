@@ -71,17 +71,6 @@ public class MyTaskRecyclerViewAdapter extends RecyclerView.Adapter<MyTaskRecycl
         int color = ContextCompat.getColor(holder.mRootView.getContext(), colorResId);
         ViewCompat.setBackgroundTintList(holder.mRootView, ColorStateList.valueOf(color));
 
-        AppDatabase db = AppDatabase.getInstance(context);
-        dao = db.taskDao();
-        holder.mDeleteView.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View view) {
-                Executors.newSingleThreadExecutor().execute(() -> {
-                    dao.delete(currentTask);
-                });
-            }
-        });
-
         holder.countdownTimer = createCountdownTimer(
                 currentTask.getDate_and_time(),
                 currentTask.getFormat(),
@@ -100,7 +89,6 @@ public class MyTaskRecyclerViewAdapter extends RecyclerView.Adapter<MyTaskRecycl
     public class ViewHolder extends RecyclerView.ViewHolder {
         public final TextView mTitleView;
         public final TextView mCountdownView;
-        public final ImageButton mDeleteView;
         public Task mTask;
 
         public CountDownTimer countdownTimer = null;
@@ -111,7 +99,7 @@ public class MyTaskRecyclerViewAdapter extends RecyclerView.Adapter<MyTaskRecycl
             super(binding.getRoot());
             mTitleView = binding.itemTitle;
             mCountdownView = binding.itemCountdown;
-            mDeleteView  = binding.itemDelButton;
+
 
             mRootView = binding.getRoot();
         }

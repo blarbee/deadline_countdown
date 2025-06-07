@@ -10,6 +10,7 @@ import android.widget.Button;
 import android.widget.CheckBox;
 import android.widget.DatePicker;
 import android.widget.EditText;
+import android.widget.ImageButton;
 import android.widget.RadioButton;
 import android.widget.RadioGroup;
 import android.widget.TextView;
@@ -69,6 +70,20 @@ public class EditActivity extends AppCompatActivity {
             Log.e("debug", "EditActivity intent task is null");
 
         }
+        ImageButton delete_button = findViewById(R.id.item_del_button);
+        delete_button.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+                Executors.newSingleThreadExecutor().execute(() -> {
+                    dao.delete(current_task);
+                    runOnUiThread(() -> {
+                        Toast.makeText(EditActivity.this, "Task " + current_task.getTitle() + " was deleted", Toast.LENGTH_SHORT).show();
+                        finish();
+                    });
+                });
+
+            }
+        });
         listenForTaskColor();
         listenForDate();
         listenForTime();

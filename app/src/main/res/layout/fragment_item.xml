@@ -36,16 +36,16 @@
         app:layout_constraintTop_toBottomOf="@id/item_title"
         />
 
-    <ImageButton
-        android:id="@+id/item_del_button"
-        style="@style/save_button"
-        android:layout_width="24dp"
-        android:layout_height="24dp"
-        android:layout_margin="0dp"
-        android:drawableTint="@color/og_black"
-        android:background="@drawable/delete_outline_24"
-        app:layout_constraintRight_toRightOf="parent"
-        app:layout_constraintBottom_toBottomOf="parent"
+<!--    <ImageButton-->
+<!--        android:id="@+id/item_del_button"-->
+<!--        style="@style/save_button"-->
+<!--        android:layout_width="24dp"-->
+<!--        android:layout_height="24dp"-->
+<!--        android:layout_margin="0dp"-->
+<!--        android:drawableTint="@color/og_black"-->
+<!--        android:background="@drawable/delete_outline_24"-->
+<!--        app:layout_constraintRight_toRightOf="parent"-->
+<!--        app:layout_constraintBottom_toBottomOf="parent"-->
 
-        />
+<!--        />-->
 </androidx.constraintlayout.widget.ConstraintLayout>
