@@ -7,7 +7,7 @@
 With the Deadline Countdown app you're able to create and edit individual "tasks" or events to your liking.
 The countdown's format is the main selling point of this app; it helps you visualize how long you have left to complete a project or run errands before a due date.
 
-I personnally wanted my app to specifically display how long in hours I have before a due date; I find it less overwhelming that way and it therefore helps me staying productive.
+I personnally wanted my app to specifically display how long in hours I have before a due date; I find it less overwhelming that way and it therefore helps me stay productive.
 
 ## Features I'm working on and planning to implement to the final product
 - Widgets to add to homescreen
