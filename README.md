@@ -1,13 +1,13 @@
 # Deadline_Countdown
-## **Android app written in Java made to keep track of uncoming tasks/events that require preparatory work.**
-![Section 1](https://github.com/user-attachments/assets/2b3f5a96-2c28-4f26-8880-1d46a38b3f00)
-![Section 2](https://github.com/user-attachments/assets/021b1c77-a3b3-4072-a0e7-6ae291cef47a)
+**Android app written in Java made to keep track of uncoming tasks/events that require preparatory work.**
+
+![Frame 1](https://github.com/user-attachments/assets/71fc41cb-2302-418b-a312-2259f72cffa0)
 
 ## What does it do?
 With the Deadline Countdown app you're able to create and edit individual "tasks" or events to your liking.
 The countdown's format is the main selling point of this app; it helps you visualize how long you have left to complete a project or run errands before a due date.
 
-I personnally wanted my app to specifically display how long in hours I have before a due date; I find it less overwhelming that way and it therefore helps me stay productive.
+I personnally wanted my app to specifically display how long in hours I have before a deadline; I find it less overwhelming that way and it therefore helps me stay productive.
 
 ## Features I'm working on and planning to implement to the final product
 - Widgets to add to homescreen
