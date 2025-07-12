@@ -13,6 +13,7 @@ I personnally wanted my app to specifically display how long in hours I have bef
 - Widgets to add to homescreen
 - Notifications Xh or Xmin before due date and once the countdown reaches its end (option to enable in settings)
 - Multiple color themes to pick from in settings
+- May or may not display eventual description on homescreen card
 
 ### Features I will **not** implement
 - Ability to tick off tasks once they're done
