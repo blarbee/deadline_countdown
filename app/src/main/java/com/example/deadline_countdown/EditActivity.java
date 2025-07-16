@@ -77,7 +77,7 @@ public class EditActivity extends AppCompatActivity {
                 Executors.newSingleThreadExecutor().execute(() -> {
                     dao.delete(current_task);
                     runOnUiThread(() -> {
-                        Toast.makeText(EditActivity.this, "Task " + current_task.getTitle() + " was deleted", Toast.LENGTH_SHORT).show();
+                        Toast.makeText(EditActivity.this, "Task '" + current_task.getTitle() + "' was deleted", Toast.LENGTH_SHORT).show();
                         finish();
                     });
                 });
