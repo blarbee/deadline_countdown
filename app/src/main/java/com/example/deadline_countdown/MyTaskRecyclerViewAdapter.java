@@ -19,6 +19,7 @@ import android.view.ViewGroup;
 import android.widget.Button;
 import android.widget.ImageButton;
 import android.widget.TextView;
+import android.widget.Toast;
 
 import com.example.deadline_countdown.placeholder.PlaceholderContent.PlaceholderItem;
 import com.example.deadline_countdown.databinding.FragmentItemBinding;
@@ -166,16 +167,20 @@ public class MyTaskRecyclerViewAdapter extends RecyclerView.Adapter<MyTaskRecycl
                             display.append(seconds).append("s");
                         }
                         countdownView.setText(display.toString().trim());
+
+
                     }
 
                     @Override
                     public void onFinish() {
-                        countdownView.setText("It's too late now");
+                        countdownView.setText("This countdown has reached its end");
                     }
                 };
             } else {
-                countdownView.setText("That deadline is already in the past");
+                countdownView.setText("That deadline is set in the past");
             }
+
+
 
         } catch (Exception e) {
             countdownView.setText("Invalid date format");

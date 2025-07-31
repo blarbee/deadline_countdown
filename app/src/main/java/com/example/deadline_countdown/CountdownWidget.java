@@ -1,8 +1,10 @@
 package com.example.deadline_countdown;
 
+import android.app.PendingIntent;
 import android.appwidget.AppWidgetManager;
 import android.appwidget.AppWidgetProvider;
 import android.content.Context;
+import android.content.Intent;
 import android.util.Log;
 import android.widget.RemoteViews;
 import android.widget.Toast;
@@ -17,7 +19,11 @@ public class CountdownWidget extends AppWidgetProvider {
 //        CharSequence widgetText = context.getString(R.string.appwidget_text);
         // Construct the RemoteViews object
         RemoteViews views = new RemoteViews(context.getPackageName(), R.layout.countdown_widget);
-//        views.setTextViewText(R.id.appwidget_text, widgetText);
+        Intent configIntent = new Intent(context, MainActivity.class);
+
+        PendingIntent configPendingIntent = PendingIntent.getActivity(context, 0, configIntent, PendingIntent.FLAG_IMMUTABLE);
+
+        views.setOnClickPendingIntent(R.id.widget, configPendingIntent);
 
         Log.d("debug", "Widget updateAppWidget");
 

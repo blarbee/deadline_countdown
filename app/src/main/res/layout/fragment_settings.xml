@@ -6,12 +6,49 @@
     xmlns:app="http://schemas.android.com/apk/res-auto"
     tools:context=".SettingsFragment">
 
-    <!-- TODO: Update blank fragment layout -->
+<!--    <Switch-->
+<!--        android:id="@+id/oneweekswitch"-->
+<!--        android:layout_width="match_parent"-->
+<!--        android:layout_height="wrap_content"-->
+<!--        android:padding="@dimen/text_margin"-->
+<!--        android:background="@drawable/task_background"-->
+<!--        android:layout_margin="12dp"-->
+<!--        app:layout_constraintLeft_toLeftOf="parent"-->
+<!--        app:layout_constraintLeft_toRightOf="parent"-->
+<!--        app:layout_constraintTop_toTopOf="parent"-->
+<!--        android:text="Receive a notification 1 week before the deadlines"-->
+<!--        />-->
+
+<!--    <Switch-->
+<!--        android:id="@+id/hours24switch"-->
+<!--        android:layout_width="match_parent"-->
+<!--        android:layout_height="wrap_content"-->
+<!--        android:padding="@dimen/text_margin"-->
+<!--        android:background="@drawable/task_background"-->
+<!--        android:layout_margin="12dp"-->
+<!--        app:layout_constraintLeft_toLeftOf="parent"-->
+<!--        app:layout_constraintLeft_toRightOf="parent"-->
+<!--        app:layout_constraintTop_toBottomOf="@id/oneweekswitch"-->
+<!--        android:text="Receive a notification 24 hours before the deadlines"-->
+<!--        />-->
+
+<!--    <Switch-->
+<!--        android:id="@+id/finalswitch"-->
+<!--        android:layout_width="match_parent"-->
+<!--        android:layout_height="wrap_content"-->
+<!--        android:padding="@dimen/text_margin"-->
+<!--        android:background="@drawable/task_background"-->
+<!--        android:layout_margin="12dp"-->
+<!--        app:layout_constraintLeft_toLeftOf="parent"-->
+<!--        app:layout_constraintLeft_toRightOf="parent"-->
+<!--        app:layout_constraintTop_toBottomOf="@id/hours24switch"-->
+<!--        android:text="Receive a notification once the countdown reaches its end"-->
+<!--        />-->
 
     <TextView
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:text="Made out of spite by Blarbee"
+        android:text="Made by Blarbee"
         android:textColor="@color/og_white"
 
         app:layout_constraintBottom_toBottomOf="parent"
@@ -23,8 +60,8 @@
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:text="@string/coming_soon"
+        android:textStyle="italic"
         android:textColor="@color/og_grey"
-
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintTop_toTopOf="parent"
         app:layout_constraintRight_toRightOf="parent"

@@ -1,18 +1,46 @@
 <RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
-    style="@style/Widget.Deadline_Countdown.AppWidget.Container"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    android:id="@+id/widget"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    android:theme="@style/Theme.Deadline_Countdown.AppWidgetContainer">
+    android:background="@drawable/task_background"
+    android:backgroundTint="@color/og_white">
+
+<!--    <TextView-->
+<!--        android:id="@+id/appwidget_text"-->
+<!--        android:layout_width="wrap_content"-->
+<!--        android:layout_height="wrap_content"-->
+<!--        android:layout_centerHorizontal="true"-->
+<!--        android:layout_centerVertical="true"-->
+<!--        android:layout_margin="8dp"-->
+<!--        android:contentDescription="@string/appwidget_text"-->
+<!--        android:text="@string/appwidget_text"-->
+<!--        android:textSize="24sp"-->
+<!--        android:textStyle="bold|italic" />-->
 
     <TextView
-        android:id="@+id/appwidget_text"
+        android:id="@+id/widgetTitle"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:layout_centerHorizontal="true"
-        android:layout_centerVertical="true"
-        android:layout_margin="8dp"
-        android:contentDescription="@string/appwidget_text"
-        android:text="@string/appwidget_text"
-        android:textSize="24sp"
-        android:textStyle="bold|italic" />
+        android:text="Click here to"
+        android:fontFamily="@font/robotoslab_bold"
+        android:textSize="20sp"
+        android:textColor="@color/og_black"
+        android:layout_marginStart="30dp"
+        android:layout_marginTop="16dp"
+        android:layout_marginBottom="16dp"
+        android:textStyle="bold"/>
+
+    <TextView
+        android:id="@+id/widgetCountdown"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="choose a timer"
+        android:fontFamily="@font/robotoslab_regular"
+        android:textSize="18sp"
+        android:textColor="@color/og_black"
+        android:layout_marginStart="30dp"
+        android:layout_below="@id/widgetTitle"/>
+
+
 </RelativeLayout>
