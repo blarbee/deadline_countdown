@@ -43,6 +43,8 @@ dependencies {
     // No additional plugins are necessary
     annotationProcessor("androidx.room:room-compiler:$room_version")
 
+    implementation("androidx.core:core-ktx:1.16.0")
+
     implementation(libs.flexbox)
     implementation(libs.appcompat)
     implementation(libs.material)

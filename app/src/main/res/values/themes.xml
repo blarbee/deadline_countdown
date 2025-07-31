@@ -2,21 +2,21 @@
     <!-- Base application theme. -->
     <style name="Base.Theme.Deadline_Countdown" parent="Theme.Material3.DayNight.NoActionBar">
         <!-- Customize your light theme here. -->
-<!--         <item name="black">@color/my_light_primary</item>-->
-        <item name="android:statusBarColor" >@color/og_white</item>
+        <!--         <item name="black">@color/my_light_primary</item>-->
+        <item name="android:statusBarColor">@color/og_white</item>
     </style>
 
     <style name="Theme.Deadline_Countdown" parent="Base.Theme.Deadline_Countdown" />
 
     <style name="header">
         <item name="android:textColor">@color/og_black</item>
-<!--        <item name="android:background">@color/og_white</item>-->
+        <!--        <item name="android:background">@color/og_white</item>-->
         <item name="android:fontFamily">@font/aladin_regular</item>
         <item name="android:autoSizeTextType">uniform</item>
         <item name="android:textSize">36sp</item>
     </style>
-    
-    
+
+
     <style name="background">
         <item name="background">@drawable/og_background</item>
     </style>
@@ -27,8 +27,8 @@
         <item name="android:layout_marginTop">16dp</item>
         <item name="android:elevation">10dp</item>
         <item name="android:padding">5dp</item>
-<!--        <item name="android:backgroundTint">@color/og_white</item>-->
-</style>
+        <!--        <item name="android:backgroundTint">@color/og_white</item>-->
+    </style>
 
     <style name="options">
         <item name="android:fontFamily">@font/robotoslab_regular</item>
@@ -52,16 +52,16 @@
     <style name="bottom_bar">
         <item name="android:fontFamily">@font/robotoslab_medium</item>
         <item name="android:background">@android:color/transparent</item>
-<!--        <item name="android:background">@color/og_cream</item>-->
+        <!--        <item name="android:background">@color/og_cream</item>-->
     </style>
 
     <style name="checkbox">
-<!--        android:clickable="true"-->
-<!--        android:focusable="true"-->
-<!--        android:background="@drawable/checkbox_selector_format"-->
-<!--        android:button="@drawable/cb_show_hide_selector"-->
-<!--        android:textColor="@color/checkbox_text"-->
-<!--        android:text="this is a checkbox"-->
+        <!--        android:clickable="true"-->
+        <!--        android:focusable="true"-->
+        <!--        android:background="@drawable/checkbox_selector_format"-->
+        <!--        android:button="@drawable/cb_show_hide_selector"-->
+        <!--        android:textColor="@color/checkbox_text"-->
+        <!--        android:text="this is a checkbox"-->
         <item name="android:fontFamily">@font/robotoslab_medium</item>
         <item name="android:textAlignment">center</item>
         <item name="android:textSize">12sp</item>
@@ -92,6 +92,23 @@
         <item name="android:textColor">@color/og_grey</item>
         <item name="android:textAllCaps">false</item>
         <item name="android:fontFamily">@font/robotoslab_regular</item>
+    </style>
+
+    <style name="Theme.Deadline_Countdown.AppWidgetContainerParent" parent="@android:style/Theme.DeviceDefault">
+        <!-- Radius of the outer bound of widgets to make the rounded corners -->
+        <item name="appWidgetRadius">16dp</item>
+        <!--
+        Radius of the inner view's bound of widgets to make the rounded corners.
+        It needs to be 8dp or less than the value of appWidgetRadius
+        -->
+        <item name="appWidgetInnerRadius">8dp</item>
+
+    </style>
+
+    <style name="Theme.Deadline_Countdown.AppWidgetContainer" parent="Theme.Deadline_Countdown.AppWidgetContainerParent">
+        <!-- Apply padding to avoid the content of the widget colliding with the rounded corners -->
+        <item name="appWidgetPadding">16dp</item>
+<!--        <item name="android:background">@drawable/og_background</item>-->
     </style>
 
 

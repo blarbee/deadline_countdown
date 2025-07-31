@@ -258,8 +258,8 @@ public class TaskActivity extends AppCompatActivity {
 
 
     private boolean allFieldsAreCompleted(){
-        if(!task_title_txt.isEmpty() || task_selected_color != ""){
-            if(task_date.getText() != "Date" || task_time.getText() != "Time"){
+        if(!task_title_txt.isEmpty() && task_selected_color != ""){
+            if(task_date.getText() != "Date" && task_time.getText() != "Time"){
                 return selected_week || selected_day || selected_hour || selected_min || selected_sec;
             }
         }

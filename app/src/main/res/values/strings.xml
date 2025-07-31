@@ -38,4 +38,7 @@
     <string name="time">Time</string>
     <string name="description_optional">Description (optional)</string>
     <string name="save_this_task">Save this task</string>
+    <string name="appwidget_text">EXAMPLE</string>
+    <string name="add_widget">Add widget</string>
+    <string name="app_widget_description">This is an app widget description</string>
 </resources>
