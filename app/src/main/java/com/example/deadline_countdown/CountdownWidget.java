@@ -37,6 +37,21 @@ public class CountdownWidget extends AppWidgetProvider {
 
         Log.d("debug", "Widget onUpdate");
         for (int appWidgetId : appWidgetIds) {
+            Intent intent = new Intent(context, MainActivity.class);
+            PendingIntent pendingIntent = PendingIntent.getActivity(
+                    /* context = */ context,
+                    /* requestCode = */ 0,
+                    /* intent = */ intent,
+                    /* flags = */ PendingIntent.FLAG_UPDATE_CURRENT | PendingIntent.FLAG_IMMUTABLE
+            );
+
+            // Get the layout for the widget and attach an onClick listener to
+            // the button.
+            RemoteViews views = new RemoteViews(context.getPackageName(), R.layout.countdown_widget);
+            views.setOnClickPendingIntent(R.id.widget, pendingIntent);
+
+            // Tell the AppWidgetManager to perform an update on the current app
+            // widget.
             updateAppWidget(context, appWidgetManager, appWidgetId);
         }
     }
