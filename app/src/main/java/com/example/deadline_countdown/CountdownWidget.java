@@ -19,7 +19,7 @@ public class CountdownWidget extends AppWidgetProvider {
 //        CharSequence widgetText = context.getString(R.string.appwidget_text);
         // Construct the RemoteViews object
         RemoteViews views = new RemoteViews(context.getPackageName(), R.layout.countdown_widget);
-        Intent configIntent = new Intent(context, MainActivity.class);
+        Intent configIntent = new Intent(context, PickTaskActivity.class);
 
         PendingIntent configPendingIntent = PendingIntent.getActivity(context, 0, configIntent, PendingIntent.FLAG_IMMUTABLE);
 
@@ -37,13 +37,8 @@ public class CountdownWidget extends AppWidgetProvider {
 
         Log.d("debug", "Widget onUpdate");
         for (int appWidgetId : appWidgetIds) {
-            Intent intent = new Intent(context, MainActivity.class);
-            PendingIntent pendingIntent = PendingIntent.getActivity(
-                    /* context = */ context,
-                    /* requestCode = */ 0,
-                    /* intent = */ intent,
-                    /* flags = */ PendingIntent.FLAG_UPDATE_CURRENT | PendingIntent.FLAG_IMMUTABLE
-            );
+            Intent intent = new Intent(context, PickTaskActivity.class);
+            PendingIntent pendingIntent = PendingIntent.getActivity(/* context = */ context,/* requestCode = */ 0,/* intent = */ intent,/* flags = */ PendingIntent.FLAG_UPDATE_CURRENT | PendingIntent.FLAG_IMMUTABLE);
 
             // Get the layout for the widget and attach an onClick listener to
             // the button.
